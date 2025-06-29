@@ -1,0 +1,574 @@
+medsync61@openemr-3-vm:/var/www/html$ sudo -u www-data composer require \
+>   guzzlehttp/guzzle:^7.4.5 \
+>   guzzlehttp/psr7:^2.4.5 \
+>   phpoffice/phpspreadsheet:^3.9 \
+>   smarty/smarty:^4.3 \
+>   phpseclib/phpseclib:^3.0.36 \
+>   knplabs/knp-snappy:^1.4.3 \
+>   phpmailer/phpmailer:^6.5 \
+>   pear/archive_tar:^1.4.14 \
+>   symfony/http-foundation:^6.4.14 \
+>   symfony/process:^6.4.14 \
+>   --with-all-dependencies
+Composer could not detect the root package (openemr/openemr) version, defaulting to '1.0.0'. See https://getcomposer.org/root-version
+./composer.json has been updated                                                                                                     
+Composer could not detect the root package (openemr/openemr) version, defaulting to '1.0.0'. See https://getcomposer.org/root-version
+Running composer update guzzlehttp/guzzle guzzlehttp/psr7 phpoffice/phpspreadsheet smarty/smarty phpseclib/phpseclib knplabs/knp-snappy phpmailer/phpmailer pear/archive_tar symfony/http-foundation symfony/process --with-all-dependencies
+Loading composer repositories with package information
+Updating dependencies                                 
+Your requirements could not be resolved to an installable set of packages.
+
+  Problem 1
+    - Root composer.json requires symfony/http-foundation ^6.4.14, found symfony/http-foundation[v6.4.14, ..., v6.4.22] but these were not loaded, likely because it conflicts with another require.
+  Problem 2
+    - Root composer.json requires guzzlehttp/guzzle ^7.4.5, found guzzlehttp/guzzle[7.4.5, ..., 7.9.3] but these were not loaded, likely because it conflicts with another require.
+  Problem 3
+    - kamermans/guzzle-oauth2-subscriber is locked to version v1.0.6 and an update of this package was not requested.
+    - kamermans/guzzle-oauth2-subscriber v1.0.6 requires guzzlehttp/guzzle >=4.0 -> found guzzlehttp/guzzle[4.0.0, ..., 4.2.4, 5.0.0, ..., 5.3.4, 6.0.0, ..., 6.5.8, 7.0.0, ..., 7.9.3] but these were not loaded, likely because it conflicts with another require.
+  Problem 4
+    - Root composer.json requires symfony/process ^6.4.14 -> satisfiable by symfony/process[v6.4.14, v6.4.15, v6.4.19, v6.4.20].
+    - symfony/process[v6.4.14, ..., v6.4.20] require php >=8.1 -> your php version (7.1; overridden via config.platform, actual: 8.1.32) does not satisfy that requirement.
+  Problem 5
+    - Root composer.json requires knplabs/knp-snappy ^1.4.3 -> satisfiable by knplabs/knp-snappy[v1.4.3, v1.4.4, v1.5.0, v1.5.1].
+    - knplabs/knp-snappy[v1.4.3, ..., v1.4.4] require symfony/process ~3.4||~4.3||~5.0||~6.0 -> satisfiable by symfony/process[v6.4.14, v6.4.15, v6.4.19, v6.4.20].
+    - knplabs/knp-snappy[v1.5.0, ..., v1.5.1] require php >=8.1 -> your php version (7.1; overridden via config.platform, actual: 8.1.32) does not satisfy that requirement.
+    - symfony/process[v6.4.14, ..., v6.4.20] require php >=8.1 -> your php version (7.1; overridden via config.platform, actual: 8.1.32) does not satisfy that requirement.
+
+
+Installation failed, reverting ./composer.json and ./composer.lock to their original content.
+medsync61@openemr-3-vm:/var/www/html$ sudo cp -r /var/www/html /var/www/html_bkp_$(date +%Y%m%d_%H%M)
+
+medsync61@openemr-3-vm:/var/www/html$ 
+medsync61@openemr-3-vm:/var/www/html$ sudo -u www-data composer audit
+Composer could not detect the root package (openemr/openemr) version, defaulting to '1.0.0'. See https://getcomposer.org/root-version
+Found 54 security vulnerability advisories affecting 9 packages:
++-------------------+----------------------------------------------------------------------------------+
+| Package           | guzzlehttp/guzzle                                                                |
+| Severity          | high                                                                             |
+| CVE               | CVE-2022-31091                                                                   |
+| Title             | Change in port should be considered a change in origin                           |
+| URL               | https://github.com/guzzle/guzzle/security/advisories/GHSA-q559-8m2m-g699         |
+| Affected versions | >=7,<7.4.5|>=4,<6.5.8                                                            |
+| Reported at       | 2022-06-20T22:24:00+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | guzzlehttp/guzzle                                                                |
+| Severity          | high                                                                             |
+| CVE               | CVE-2022-31090                                                                   |
+| Title             | CURLOPT_HTTPAUTH option not cleared on change of origin                          |
+| URL               | https://github.com/guzzle/guzzle/security/advisories/GHSA-25mq-v84q-4j7r         |
+| Affected versions | >=7,<7.4.5|>=4,<6.5.8                                                            |
+| Reported at       | 2022-06-20T22:24:00+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | guzzlehttp/guzzle                                                                |
+| Severity          | high                                                                             |
+| CVE               | CVE-2022-31043                                                                   |
+| Title             | Fix failure to strip Authorization header on HTTP downgrade                      |
+| URL               | https://github.com/guzzle/guzzle/security/advisories/GHSA-w248-ffj2-4v5q         |
+| Affected versions | >=7,<7.4.4|>=4,<6.5.7                                                            |
+| Reported at       | 2022-06-09T23:36:00+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | guzzlehttp/guzzle                                                                |
+| Severity          | high                                                                             |
+| CVE               | CVE-2022-31042                                                                   |
+| Title             | Failure to strip the Cookie header on change in host or HTTP downgrade           |
+| URL               | https://github.com/guzzle/guzzle/security/advisories/GHSA-f2wf-25xc-69c9         |
+| Affected versions | >=7,<7.4.4|>=4,<6.5.7                                                            |
+| Reported at       | 2022-06-09T23:36:00+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | guzzlehttp/guzzle                                                                |
+| Severity          | high                                                                             |
+| CVE               | CVE-2022-29248                                                                   |
+| Title             | Cross-domain cookie leakage                                                      |
+| URL               | https://github.com/guzzle/guzzle/security/advisories/GHSA-cwmx-hcrq-mhc3         |
+| Affected versions | >=7,<7.4.3|>=4,<6.5.6                                                            |
+| Reported at       | 2022-05-25T13:21:00+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | knplabs/knp-snappy                                                               |
+| Severity          | critical                                                                         |
+| CVE               | CVE-2023-41330                                                                   |
+| Title             | Snappy PHAR deserialization vulnerability                                        |
+| URL               | https://github.com/advisories/GHSA-92rv-4j2h-8mjj                                |
+| Affected versions | <=1.4.2                                                                          |
+| Reported at       | 2023-09-06T15:24:48+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | knplabs/knp-snappy                                                               |
+| Severity          | critical                                                                         |
+| CVE               | CVE-2023-28115                                                                   |
+| Title             | PHAR deserialization allowing remote code execution                              |
+| URL               | https://github.com/advisories/GHSA-gq6w-q6wh-jggc                                |
+| Affected versions | <1.4.2                                                                           |
+| Reported at       | 2023-03-17T15:47:00+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | pear/archive_tar                                                                 |
+| Severity          | high                                                                             |
+| CVE               | CVE-2021-32610                                                                   |
+| Title             | Directory Traversal in Archive_Tar                                               |
+| URL               | https://github.com/advisories/GHSA-p8q8-jfcv-g2h2                                |
+| Affected versions | <1.4.14                                                                          |
+| Reported at       | 2021-08-09T20:40:06+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | pear/archive_tar                                                                 |
+| Severity          | high                                                                             |
+| CVE               | CVE-2020-28948                                                                   |
+| Title             | Deserialization of Untrusted Data in Archive_Tar                                 |
+| URL               | https://github.com/advisories/GHSA-jh5x-hfhg-78jq                                |
+| Affected versions | <1.4.11                                                                          |
+| Reported at       | 2021-04-22T16:20:50+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | pear/archive_tar                                                                 |
+| Severity          | high                                                                             |
+| CVE               | CVE-2020-36193                                                                   |
+| Title             | Allows write operations with Directory Traversal due to inadequate checking of   |
+|                   | symbolic links                                                                   |
+| URL               | https://github.com/pear/Archive_Tar/commit/cde460582ff389404b5b3ccb59374e9b389de |
+|                   | 916                                                                              |
+| Affected versions | <1.4.12                                                                          |
+| Reported at       | 2021-01-18T00:00:00+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | pear/archive_tar                                                                 |
+| Severity          | high                                                                             |
+| CVE               | CVE-2020-28949                                                                   |
+| Title             | Potential file overwrite if archive filename starts with file://                 |
+| URL               | https://github.com/pear/Archive_Tar/issues/33                                    |
+| Affected versions | <1.4.11                                                                          |
+| Reported at       | 2020-11-20T00:00:00+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpmailer/phpmailer                                                              |
+| Severity          | high                                                                             |
+| CVE               | CVE-2021-34551                                                                   |
+| Title             | RCE affecting Windows hosts via UNC paths to translation files                   |
+| URL               | https://github.com/PHPMailer/PHPMailer/releases/tag/v6.5.0                       |
+| Affected versions | <6.5.0                                                                           |
+| Reported at       | 2021-06-16T16:20:00+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpmailer/phpmailer                                                              |
+| Severity          | high                                                                             |
+| CVE               | CVE-2021-3603                                                                    |
+| Title             | Untrusted code may be run from an overridden address validator                   |
+| URL               | https://github.com/PHPMailer/PHPMailer/releases/tag/v6.5.0                       |
+| Affected versions | <6.5.0                                                                           |
+| Reported at       | 2021-06-16T16:20:00+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpmailer/phpmailer                                                              |
+| Severity          | high                                                                             |
+| CVE               | CVE-2020-13625                                                                   |
+| Title             | Insufficient output escaping of attachment names in PHPMailer                    |
+| URL               | https://github.com/advisories/GHSA-f7hx-fqxw-rvvj                                |
+| Affected versions | <6.1.6                                                                           |
+| Reported at       | 2020-05-27T16:37:02+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | medium                                                                           |
+| CVE               | CVE-2025-23210                                                                   |
+| Title             | PhpSpreadsheet allows bypassing of XSS sanitizer using the javascript protocol   |
+|                   | and special characters                                                           |
+| URL               | https://github.com/advisories/GHSA-r57h-547h-w24f                                |
+| Affected versions | >=2.0.0,<2.1.8|>=2.2.0,<2.3.7|<1.29.9|>=3.0.0,<3.9.0                             |
+| Reported at       | 2025-02-03T15:39:31+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | medium                                                                           |
+| CVE               | CVE-2025-22131                                                                   |
+| Title             | Cross-Site Scripting (XSS) vulnerability in generateNavigation() function in     |
+|                   | PhpSpreadsheet                                                                   |
+| URL               | https://github.com/advisories/GHSA-79xx-vf93-p7cx                                |
+| Affected versions | >=2.2.0,<2.3.6|>=2.0.0,<2.1.7|<1.29.8|>=3.0.0,<3.8.0                             |
+| Reported at       | 2025-01-21T21:09:13+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | medium                                                                           |
+| CVE               | CVE-2024-56412                                                                   |
+| Title             | PhpSpreadsheet allows bypass XSS sanitizer using the javascript protocol and     |
+|                   | special characters                                                               |
+| URL               | https://github.com/advisories/GHSA-q9jv-mm3r-j47r                                |
+| Affected versions | >=2.2.0,<=2.3.4|>=2.0.0,<=2.1.5|<=1.29.6|>=3.0.0,<3.7.0                          |
+| Reported at       | 2025-01-03T17:29:10+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | medium                                                                           |
+| CVE               | CVE-2024-56411                                                                   |
+| Title             | PhpSpreadsheet has a Cross-Site Scripting (XSS) vulnerability of the hyperlink   |
+|                   | base in the HTML page header                                                     |
+| URL               | https://github.com/advisories/GHSA-hwcp-2h35-p66w                                |
+| Affected versions | >=2.2.0,<=2.3.4|>=2.0.0,<=2.1.5|<=1.29.6|>=3.0.0,<3.7.0                          |
+| Reported at       | 2025-01-03T17:28:50+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | medium                                                                           |
+| CVE               | CVE-2024-56410                                                                   |
+| Title             | PhpSpreadsheet has a Cross-Site Scripting (XSS) vulnerability in custom          |
+|                   | properties                                                                       |
+| URL               | https://github.com/advisories/GHSA-wv23-996v-q229                                |
+| Affected versions | >=2.2.0,<=2.3.4|>=2.0.0,<=2.1.5|<=1.29.6|>=3.0.0,<3.7.0                          |
+| Reported at       | 2025-01-03T17:25:45+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | high                                                                             |
+| CVE               | CVE-2024-56409                                                                   |
+| Title             | PhpSpreadsheet allows unauthorized Reflected XSS in Currency.php file            |
+| URL               | https://github.com/advisories/GHSA-j2xg-cjcx-4677                                |
+| Affected versions | >=2.2.0,<=2.3.4|>=2.0.0,<=2.1.5|<=1.29.6|>=3.0.0,<3.7.0                          |
+| Reported at       | 2025-01-03T17:06:51+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | high                                                                             |
+| CVE               | CVE-2024-56366                                                                   |
+| Title             | PhpSpreadsheet allows unauthorized Reflected XSS in the Accounting.php file      |
+| URL               | https://github.com/advisories/GHSA-c6fv-7vh8-2rhr                                |
+| Affected versions | >=2.2.0,<=2.3.4|>=2.0.0,<=2.1.5|<=1.29.6|>=3.0.0,<3.7.0                          |
+| Reported at       | 2025-01-03T17:06:23+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | high                                                                             |
+| CVE               | CVE-2024-56365                                                                   |
+| Title             | PhpSpreadsheet allows unauthorized Reflected XSS in the constructor of the       |
+|                   | Downloader class                                                                 |
+| URL               | https://github.com/advisories/GHSA-jmpx-686v-c3wx                                |
+| Affected versions | >=2.2.0,<=2.3.4|>=2.0.0,<=2.1.5|<=1.29.6|>=3.0.0,<3.7.0                          |
+| Reported at       | 2025-01-03T17:06:05+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | high                                                                             |
+| CVE               | CVE-2024-56408                                                                   |
+| Title             | PhpSpreadsheet allows unauthorized Reflected XSS in `Convert-Online.php` file    |
+| URL               | https://github.com/advisories/GHSA-x88g-h956-m5xg                                |
+| Affected versions | >=2.2.0,<=2.3.4|>=2.0.0,<=2.1.5|<=1.29.6|>=3.0.0,<3.7.0                          |
+| Reported at       | 2025-01-03T16:05:26+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | high                                                                             |
+| CVE               | CVE-2024-48917                                                                   |
+| Title             | XXE in PHPSpreadsheet's XLSX reader                                              |
+| URL               | https://github.com/advisories/GHSA-7cc9-j4mv-vcjp                                |
+| Affected versions | >=3.3.0,<3.4.0|>=2.2.0,<2.3.2|>=2.0.0,<2.1.3|<1.29.4                             |
+| Reported at       | 2024-11-18T20:01:46+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | high                                                                             |
+| CVE               | CVE-2024-47873                                                                   |
+| Title             | XmlScanner bypass leads to XXE                                                   |
+| URL               | https://github.com/advisories/GHSA-jw4x-v69f-hh5w                                |
+| Affected versions | >=3.3.0,<3.4.0|>=2.2.0,<2.3.2|>=2.0.0,<2.1.3|<1.29.4                             |
+| Reported at       | 2024-11-18T20:01:20+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | high                                                                             |
+| CVE               | CVE-2024-45293                                                                   |
+| Title             | XXE in PHPSpreadsheet's XLSX reader                                              |
+| URL               | https://github.com/advisories/GHSA-6hwr-6v2f-3m88                                |
+| Affected versions | >=2.0.0,<2.1.1|<1.29.1|>=2.2.0,<2.3.0                                            |
+| Reported at       | 2024-10-07T15:58:52+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | medium                                                                           |
+| CVE               | CVE-2024-45292                                                                   |
+| Title             | PhpSpreadsheet HTML writer is vulnerable to Cross-Site Scripting via JavaScript  |
+|                   | hyperlinks                                                                       |
+| URL               | https://github.com/advisories/GHSA-r8w8-74ww-j4wh                                |
+| Affected versions | >=2.0.0,<2.1.1|<1.29.2|>=2.2.0,<2.3.0                                            |
+| Reported at       | 2024-10-07T15:58:25+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | medium                                                                           |
+| CVE               | CVE-2024-45291                                                                   |
+| Title             | PhpSpreadsheet allows absolute path traversal and Server-Side Request Forgery in |
+|                   | HTML writer when embedding images is enabled                                     |
+| URL               | https://github.com/advisories/GHSA-w9xv-qf98-ccq4                                |
+| Affected versions | >=2.0.0,<2.1.1|<1.29.2|>=2.2.0,<2.3.0                                            |
+| Reported at       | 2024-10-07T15:58:06+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | high                                                                             |
+| CVE               | CVE-2024-45290                                                                   |
+| Title             | PhpSpreadsheet allows absolute path traversal and Server-Side Request Forgery    |
+|                   | when opening XLSX file                                                           |
+| URL               | https://github.com/advisories/GHSA-5gpr-w2p5-6m37                                |
+| Affected versions | >=2.0.0,<2.1.1|<1.29.2|>=2.2.0,<2.3.0                                            |
+| Reported at       | 2024-10-07T15:57:38+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | medium                                                                           |
+| CVE               | CVE-2024-45060                                                                   |
+| Title             | PhpSpreadsheet has an Unauthenticated Cross-Site-Scripting (XSS) in sample file  |
+| URL               | https://github.com/advisories/GHSA-v66g-p9x6-v98p                                |
+| Affected versions | >=2.0.0,<2.1.1|<1.29.2|>=2.2.0,<2.3.0                                            |
+| Reported at       | 2024-10-07T14:43:30+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | high                                                                             |
+| CVE               | CVE-2024-45048                                                                   |
+| Title             | XXE in PHPSpreadsheet encoding is returned                                       |
+| URL               | https://github.com/advisories/GHSA-ghg6-32f9-2jp7                                |
+| Affected versions | >=2.0.0,<2.1.1|>=2.2.0,<2.2.1|<1.29.1                                            |
+| Reported at       | 2024-08-29T17:58:27+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | medium                                                                           |
+| CVE               | CVE-2024-45046                                                                   |
+| Title             | PhpSpreadsheet HTML writer is vulnerable to Cross-Site Scripting via style       |
+|                   | information                                                                      |
+| URL               | https://github.com/advisories/GHSA-wgmf-q9vr-vww6                                |
+| Affected versions | <1.29.1|>=2.0.0,<2.1.0                                                           |
+| Reported at       | 2024-08-29T17:56:56+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | medium                                                                           |
+| CVE               | CVE-2020-7776                                                                    |
+| Title             | XSS Vulnerability in HTML Writer                                                 |
+| URL               | https://github.com/PHPOffice/PhpSpreadsheet/pull/1719                            |
+| Affected versions | <1.16.0                                                                          |
+| Reported at       | 2020-12-31T19:20:00+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpoffice/phpspreadsheet                                                         |
+| Severity          | high                                                                             |
+| CVE               | CVE-2019-12331                                                                   |
+| Title             | XXE Vulnerability                                                                |
+| URL               | https://github.com/PHPOffice/PhpSpreadsheet/pull/1041                            |
+| Affected versions | <1.8.0                                                                           |
+| Reported at       | 2019-07-01T12:55:00+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpseclib/phpseclib                                                              |
+| Severity          | high                                                                             |
+| CVE               | CVE-2023-52892                                                                   |
+| Title             | Name confusion in x509 Subject Alternative Name fields                           |
+| URL               | https://github.com/advisories/GHSA-ff7q-6vwh-v9m4                                |
+| Affected versions | >=3.0.0,<3.0.33|>=2.0.0,<2.0.46|<1.0.22                                          |
+| Reported at       | 2024-06-28T00:33:31+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpseclib/phpseclib                                                              |
+| Severity          | high                                                                             |
+| CVE               | CVE-2024-27354                                                                   |
+| Title             | phpseclib a large prime can cause a denial of service                            |
+| URL               | https://github.com/advisories/GHSA-hg35-mp25-qf6h                                |
+| Affected versions | >=3.0.0,<3.0.36|>=2.0.0,<2.0.47|>=1.0.0,<1.0.23                                  |
+| Reported at       | 2024-03-02T00:31:33+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpseclib/phpseclib                                                              |
+| Severity          | high                                                                             |
+| CVE               | CVE-2024-27355                                                                   |
+| Title             | phpseclib does not properly limit the ASN1 OID length                            |
+| URL               | https://github.com/advisories/GHSA-jr22-8qgm-4q87                                |
+| Affected versions | >=3.0.0,<3.0.36|>=2.0.0,<2.0.47|>=1.0.0,<1.0.23                                  |
+| Reported at       | 2024-03-02T00:31:33+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | phpseclib/phpseclib                                                              |
+| Severity          | high                                                                             |
+| CVE               | CVE-2021-30130                                                                   |
+| Title             | Improper Certificate Validation in phpseclib                                     |
+| URL               | https://github.com/phpseclib/phpseclib/pull/1635                                 |
+| Affected versions | <2.0.31|>=3.0.0,<3.0.7                                                           |
+| Reported at       | 2021-04-06T13:43:13+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | smarty/smarty                                                                    |
+| Severity          | high                                                                             |
+| CVE               | CVE-2023-28447                                                                   |
+| Title             | Cross site scripting vulnerability in Javascript escaping                        |
+| URL               | https://github.com/smarty-php/smarty/security/advisories/GHSA-7j98-h7fp-4vwj     |
+| Affected versions | <3.1.48|>=4.0.0,<4.1.1                                                           |
+| Reported at       | 2023-03-28T19:41:00+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | smarty/smarty                                                                    |
+| Severity          | medium                                                                           |
+| CVE               | CVE-2018-25047                                                                   |
+| Title             | smarty_function_mailto - JavaScript injection in eval function                   |
+| URL               | https://github.com/smarty-php/smarty/issues/454                                  |
+| Affected versions | <3.1.47|>=4.0.0,<4.2.1                                                           |
+| Reported at       | 2022-09-14T11:32:14+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | smarty/smarty                                                                    |
+| Severity          | high                                                                             |
+| CVE               | CVE-2022-29221                                                                   |
+| Title             | PHP Code Injection by malicious block or filename                                |
+| URL               | https://github.com/smarty-php/smarty/security/advisories/GHSA-634x-pc3q-cf4c     |
+| Affected versions | <3.1.45|>=4.0.0,<4.1.1                                                           |
+| Reported at       | 2022-05-17T12:59:00+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | smarty/smarty                                                                    |
+| Severity          | medium                                                                           |
+| CVE               | CVE-2012-4437                                                                    |
+| Title             | Cross-site Scripting in SmartyException                                          |
+| URL               | https://github.com/advisories/GHSA-9gqj-ppv2-f2hq                                |
+| Affected versions | <3.1.12                                                                          |
+| Reported at       | 2022-05-17T04:02:12+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | smarty/smarty                                                                    |
+| Severity          | high                                                                             |
+| CVE               | CVE-2014-8350                                                                    |
+| Title             | Smarty arbitrary PHP code execution                                              |
+| URL               | https://github.com/advisories/GHSA-2pmx-6mm6-6v72                                |
+| Affected versions | <3.1.21                                                                          |
+| Reported at       | 2022-05-17T01:13:38+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | smarty/smarty                                                                    |
+| Severity          | medium                                                                           |
+| CVE               | CVE-2009-5054                                                                    |
+| Title             | Smarty Does Not Consider Umask Values When Setting Permissions                   |
+| URL               | https://github.com/advisories/GHSA-6m9f-8vwq-97pm                                |
+| Affected versions | <3.0.0-beta4                                                                     |
+| Reported at       | 2022-05-02T04:00:47+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | smarty/smarty                                                                    |
+| Severity          | critical                                                                         |
+| CVE               | CVE-2011-1028                                                                    |
+| Title             | Smarty3 Arbitrary PHP Code Execution                                             |
+| URL               | https://github.com/advisories/GHSA-6frx-2r5w-c524                                |
+| Affected versions | <3.0.7                                                                           |
+| Reported at       | 2022-04-22T00:24:15+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | smarty/smarty                                                                    |
+| Severity          | high                                                                             |
+| CVE               | CVE-2021-21408                                                                   |
+| Title             | Access to restricted PHP code by dynamic static class access                     |
+| URL               | https://github.com/smarty-php/smarty/security/advisories/GHSA-4h9c-v5vg-5m6m     |
+| Affected versions | <3.1.43|>=4.0.0,<4.0.3                                                           |
+| Reported at       | 2022-01-10T10:48:27+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | smarty/smarty                                                                    |
+| Severity          | high                                                                             |
+| CVE               | CVE-2021-29454                                                                   |
+| Title             | Sandbox Escape by math function                                                  |
+| URL               | https://github.com/smarty-php/smarty/security/advisories/GHSA-29gp-2c3m-3j6m     |
+| Affected versions | <3.1.42|>=4.0.0,<4.0.2                                                           |
+| Reported at       | 2022-01-10T00:01:43+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | smarty/smarty                                                                    |
+| Severity          | critical                                                                         |
+| CVE               | CVE-2021-26120                                                                   |
+| Title             | Smarty_Internal_Runtime_TplFunction Sandbox Escape PHP Code Injection            |
+| URL               | https://srcincite.io/blog/2021/02/18/smarty-template-engine-multiple-sandbox-esc |
+|                   | ape-vulnerabilities.html                                                         |
+| Affected versions | <=3.1.38                                                                         |
+| Reported at       | 2021-01-24T22:44:07+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | smarty/smarty                                                                    |
+| Severity          | high                                                                             |
+| CVE               | CVE-2021-26119                                                                   |
+| Title             | template_object Sandbox Escape PHP Code Injection                                |
+| URL               | https://srcincite.io/blog/2021/02/18/smarty-template-engine-multiple-sandbox-esc |
+|                   | ape-vulnerabilities.html                                                         |
+| Affected versions | <=3.1.38                                                                         |
+| Reported at       | 2021-01-24T22:13:26+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | smarty/smarty                                                                    |
+| Severity          | medium                                                                           |
+| CVE               | CVE-2018-16831                                                                   |
+| Title             | Trusted-Directory Bypass via Path Traversal                                      |
+| URL               | https://github.com/smarty-php/smarty/issues/486                                  |
+| Affected versions | <3.1.33                                                                          |
+| Reported at       | 2018-04-26T19:38:08+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | smarty/smarty                                                                    |
+| Severity          | high                                                                             |
+| CVE               | CVE-2018-13982                                                                   |
+| Title             | Trusted-Directory Bypass via Path Traversal                                      |
+| URL               | https://github.com/sbaresearch/advisories/tree/public/2018/SBA-ADV-20180420-01_S |
+|                   | marty_Path_Traversal                                                             |
+| Affected versions | <3.1.33                                                                          |
+| Reported at       | 2018-04-26T19:38:08+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | symfony/http-foundation                                                          |
+| Severity          | low                                                                              |
+| CVE               | CVE-2024-50345                                                                   |
+| Title             | CVE-2024-50345: Open redirect via browser-sanitized URLs                         |
+| URL               | https://symfony.com/cve-2024-50345                                               |
+| Affected versions | >=2.0.0,<3.0.0|>=3.0.0,<4.0.0|>=4.0.0,<5.0.0|>=5.0.0,<5.1.0|>=5.1.0,<5.2.0|>=5.2 |
+|                   | .0,<5.3.0|>=5.3.0,<5.4.0|>=5.4.0,<5.4.46|>=6.0.0,<6.1.0|>=6.1.0,<6.2.0|>=6.2.0,< |
+|                   | 6.3.0|>=6.3.0,<6.4.0|>=6.4.0,<6.4.14|>=7.0.0,<7.1.0|>=7.1.0,<7.1.7               |
+| Reported at       | 2024-11-05T08:00:00+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | symfony/http-foundation                                                          |
+| Severity          | high                                                                             |
+| CVE               | CVE-2019-18888                                                                   |
+| Title             | CVE-2019-18888: Prevent argument injection in a MimeTypeGuesser                  |
+| URL               | https://symfony.com/cve-2019-18888                                               |
+| Affected versions | >=2.0.0,<2.1.0|>=2.1.0,<2.2.0|>=2.2.0,<2.3.0|>=2.3.0,<2.4.0|>=2.4.0,<2.5.0|>=2.5 |
+|                   | .0,<2.6.0|>=2.6.0,<2.7.0|>=2.7.0,<2.8.0|>=2.8.0,<2.8.52|>=3.0.0,<3.1.0|>=3.1.0,< |
+|                   | 3.2.0|>=3.2.0,<3.3.0|>=3.3.0,<3.4.0|>=3.4.0,<3.4.35|>=4.0.0,<4.1.0|>=4.1.0,<4.2. |
+|                   | 0|>=4.2.0,<4.2.12|>=4.3.0,<4.3.8                                                 |
+| Reported at       | 2019-11-13T08:00:00+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------+
+| Package           | symfony/process                                                                  |
+| Severity          | high                                                                             |
+| CVE               | CVE-2024-51736                                                                   |
+| Title             | CVE-2024-51736: Command execution hijack on Windows with Process class           |
+| URL               | https://symfony.com/cve-2024-51736                                               |
+| Affected versions | >=2.0.0,<3.0.0|>=3.0.0,<4.0.0|>=4.0.0,<5.0.0|>=5.0.0,<5.1.0|>=5.1.0,<5.2.0|>=5.2 |
+|                   | .0,<5.3.0|>=5.3.0,<5.4.0|>=5.4.0,<5.4.46|>=6.0.0,<6.1.0|>=6.1.0,<6.2.0|>=6.2.0,< |
+|                   | 6.3.0|>=6.3.0,<6.4.0|>=6.4.0,<6.4.14|>=7.0.0,<7.1.0|>=7.1.0,<7.1.7               |
+| Reported at       | 2024-11-05T08:00:00+00:00                                                        |
++-------------------+----------------------------------------------------------------------------------+
+Found 16 abandoned packages:
++----------------------------------+----------------------------------------------------------------------------------+
+| Abandoned Package                | Suggested Replacement                                                            |
++----------------------------------+----------------------------------------------------------------------------------+
+| doctrine/reflection              | roave/better-reflection                                                          |
+| php-http/guzzle6-adapter         | guzzlehttp/guzzle or php-http/guzzle7-adapter                                    |
+| php-http/message-factory         | psr/http-factory                                                                 |
+| symfony/debug                    | symfony/error-handler                                                            |
+| symfony/inflector                | EnglishInflector from the String component                                       |
+| tightenco/collect                | illuminate/collections                                                           |
+| zendframework/zend-code          | laminas/laminas-code                                                             |
+| zendframework/zend-http          | laminas/laminas-http                                                             |
+| zendframework/zend-hydrator      | laminas/laminas-hydrator                                                         |
+| zendframework/zend-i18n          | laminas/laminas-i18n                                                             |
+| zendframework/zend-modulemanager | laminas/laminas-modulemanager                                                    |
+| zendframework/zend-server        | laminas/laminas-server                                                           |
+| zendframework/zend-text          | laminas/laminas-text                                                             |
+| zendframework/zend-uri           | laminas/laminas-uri                                                              |
+| zendframework/zend-validator     | laminas/laminas-validator                                                        |
+| zendframework/zend-view          | laminas/laminas-view                                                             |
++----------------------------------+----------------------------------------------------------------------------------+
+medsync61@openemr-3-vm:/var/www/html$ 
